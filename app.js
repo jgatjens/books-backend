@@ -25,12 +25,12 @@ app.configure(function(){
   app.use(express.cookieParser());
   app.use(express.methodOverride());
   app.use(app.router);
+
 });
 
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
 
 app.get('/api/books', routes.books.all);
 app.get('/api/books/:id', routes.books.one);

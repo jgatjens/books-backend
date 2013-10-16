@@ -46,7 +46,6 @@ npm install
 node app
 ```
 
-
 Frontend - Sprint 1
 - crear repositorio para el frontend en su cuenta de github
 - instalar nodejs
@@ -54,13 +53,6 @@ Frontend - Sprint 1
  - correr sass
  - livereload
  - preview server
-
-
-
-
-
-
-
 
   
     
