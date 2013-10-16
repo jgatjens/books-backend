@@ -1,4 +1,4 @@
-Book's Backend 
+Book's App 
 =========
 
 Book es una aplicación HTML5 que nos permetira:
