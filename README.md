@@ -46,7 +46,7 @@ npm install
 node app
 ```
 
-## Frontend - Sprint 1
+## Frontend - Sprint 1 ( viernes 25 de octubre ) 
 - crear repositorio para el frontend en su cuenta de github
 - instalar nodejs
 - crear archivo de configuracion de gruntjs que permita:
