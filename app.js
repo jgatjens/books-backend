@@ -10,7 +10,7 @@ var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 4000);
-  app.use(express.favicon());
+  // app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
@@ -23,10 +23,9 @@ app.configure('development', function () {
   app.use(express.errorHandler());
 });
 
-app.get('/', function (req, res) {
-  res.send('Books restful api');
-});
+console.log(routes);
 
+app.get('/', routes.homepage);
 app.get('/api/books', routes.books.all);
 app.get('/api/books/:id', routes.books.one);
 

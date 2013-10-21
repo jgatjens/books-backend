@@ -1,29 +1,35 @@
 
-var db = require("../conf/database.js");
+var db = require("../conf/database.js"),
+    Books = require("../models/books.js");
 
-exports.users = {};
+// HomePage
+exports.homepage = function (req, res) { 
+  res.send('Books restful api') 
+}
+
+// exports.users = {};
 
 /*
  * GET users listing.
  */
 
 
-exports.users.one = function(req, res){
-  var userId = db.ObjectId(req.params.id);
-  db.users.find({ "_id": userId }, function(err, user){
-    if (err) return;
-    res.json(user);
-  });
-};
+// exports.users.one = function(req, res){
+//   var userId = db.ObjectId(req.params.id);
+//   db.users.find({ "_id": userId }, function(err, user){
+//     if (err) return;
+//     res.json(user);
+//   });
+// };
 
 /*
  * POST users new.
  */
 
-exports.users.new = function(req, res){
-  res.json(req.body);
-  // db.users.save(req.body);
-};
+// exports.users.new = function(req, res){
+//   res.json(req.body);
+//   // db.users.save(req.body);
+// };
 
 
 
@@ -33,21 +39,16 @@ exports.books = {};
  * GET book specific.
  */
 
+function success(data, res){
+  res.json(data);
+}
+
+function error(err) {
+   if (err) return;
+}
+
 exports.books.one = function(req, res){
-  var bookId = db.ObjectId(req.params.id);
-  db.books.find({ "_id": bookId }, function(err, book){
-    if (err) return;
-    res.json(book);
-  });
-};
-
-/*
- * POST books new.
- */
-
-exports.books.new = function(req, res){
-  res.json(req.body);
-  db.books.save(req.body);
+  Books.one( req.params.id, success(data, res), error(err) )
 };
 
 /*
@@ -55,9 +56,15 @@ exports.books.new = function(req, res){
  */
 
 exports.books.all = function(req, res){
-  db.books.find({}, function(err, books){
-    if (err) return;
-    res.json(books);
-  });
+  Books.all( success(data, res), error(err) )
 };
 
+
+/*
+ * POST books new.
+ */
+
+// exports.books.new = function(req, res){
+//   res.json(req.body);
+//   db.books.save(req.body);
+// };
