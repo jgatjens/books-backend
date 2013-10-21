@@ -23,7 +23,7 @@ app.configure('development', function () {
   app.use(express.errorHandler());
 });
 
-console.log(routes);
+// console.log(routes);
 
 app.get('/', routes.homepage);
 app.get('/api/books', routes.books.all);

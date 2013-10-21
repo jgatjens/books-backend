@@ -1,6 +1,6 @@
 
 var db = require("../conf/database.js"),
-    Books = require("../models/books.js");
+    Books = require("../models/books.js").books;
 
 // HomePage
 exports.homepage = function (req, res) { 
@@ -32,6 +32,7 @@ exports.homepage = function (req, res) {
 // };
 
 
+console.log(Books);
 
 exports.books = {};
 
@@ -39,16 +40,17 @@ exports.books = {};
  * GET book specific.
  */
 
-function success(data, res){
-  res.json(data);
-}
-
 function error(err) {
    if (err) return;
 }
 
 exports.books.one = function(req, res){
-  Books.one( req.params.id, success(data, res), error(err) )
+  Books.one( req.params.id, 
+    function (data) {
+      res.json(data);
+    }, 
+    error() 
+  )
 };
 
 /*
@@ -56,7 +58,11 @@ exports.books.one = function(req, res){
  */
 
 exports.books.all = function(req, res){
-  Books.all( success(data, res), error(err) )
+  Books.all( function (data) {
+      res.json(data);
+    }, 
+    error() 
+  )
 };
 
 

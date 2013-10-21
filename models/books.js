@@ -21,7 +21,7 @@ var Books = function () {
 		var bookId = db.ObjectId(_id);
 		db.books.find({ "_id": bookId }, function(err, book){
 			if (err) fail(err);
-			succes(book);
+			sucess(book);
 		});
 	}
 
@@ -31,3 +31,5 @@ var Books = function () {
 	}
 
 }();
+
+exports.books = Books;
