@@ -23,11 +23,13 @@ app.configure('development', function () {
   app.use(express.errorHandler());
 });
 
-// console.log(routes);
+console.log(app.VERBS);
 
 app.get('/', routes.homepage);
 app.get('/api/books', routes.books.all);
 app.get('/api/books/:id', routes.books.one);
+app.del('/api/books/:id', routes.books.remove);
+app.post('/api/books', routes.books.create);
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log("Express server listening on port " + app.get('port'));

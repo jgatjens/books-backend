@@ -56,6 +56,7 @@ node app
 - *instalar bower (si van a utilizar jquery)
  - incluir la ultima version de jquery
  - cambiar el nombre del directorio donde bower baja las depencias por "vendors"
+- Instalar mongodb
 
   
     
