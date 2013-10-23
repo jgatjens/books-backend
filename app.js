@@ -23,13 +23,23 @@ app.configure('development', function () {
   app.use(express.errorHandler());
 });
 
-console.log(app.VERBS);
+console.log("Routers", routes);
 
 app.get('/', routes.homepage);
+
+// Books
 app.get('/api/books', routes.books.all);
 app.get('/api/books/:id', routes.books.one);
 app.del('/api/books/:id', routes.books.remove);
 app.post('/api/books', routes.books.create);
+
+// Users
+app.get('/api/users', routes.users.all);
+app.get('/api/users/:id', routes.users.one);
+app.del('/api/users/:id', routes.users.remove);
+app.post('/api/users/', routes.users.create);
+app.put('/api/users/:id/books/:id', routes.users.add_book);
+
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log("Express server listening on port " + app.get('port'));

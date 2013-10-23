@@ -28,7 +28,7 @@ var Books = function () {
 	}
 
 	/*
-	 * GET book specific.
+	 * DELETE book specific.
 	 * /books/:id
 	 */
 
