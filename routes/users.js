@@ -7,10 +7,7 @@ function error(err) {
   if (err) return;
 }
 
-
 // USERS
-
-exports.users = {};
 
 /*
  * GET users listing.
@@ -18,12 +15,12 @@ exports.users = {};
  * curl -X GET http://localhost:4000/api/users
  */
 
-exports.users.all = function(req, res){
-  console.log('users.all');
+exports.all = function(req, res){
+
   Users.all( function (data) {
       res.json(data);
     }, 
-    error() 
+    error
   )
 };
 
@@ -34,12 +31,12 @@ exports.users.all = function(req, res){
  * curl -X GET http://localhost:4000/api/users/:id
  */
 
-exports.users.one = function(req, res){
+exports.one = function(req, res){
   Users.one( req.params.id, 
     function (data) {
       res.json(data);
     }, 
-    error() 
+    error 
   )
 };
 
@@ -49,12 +46,12 @@ exports.users.one = function(req, res){
  * curl -X DELETE http://localhost:4000/api/users/:id
  */
 
-exports.users.remove = function(req, res){
+exports.remove = function(req, res){
   Users.remove( req.params.id, 
     function (data) {
       res.json(data);
     }, 
-    error() 
+    error 
   )
 };
 
@@ -65,27 +62,27 @@ exports.users.remove = function(req, res){
  * curl -X POST -H "Content-Type: application/json" -d '{"name":"xyz","avatar":"----", "books": []}' http://localhost:4000/api/users
  */
 
-exports.users.create = function(req, res){
+exports.create = function(req, res){
   users.create( req.body, 
     function (data) {
       res.json(data);
     }, 
-    error() 
+    error
   )
 };
 
 /*
  * PUT user new book.
- * /users/:id/users/:id
- * curl -X PUT -H "Content-Type: application/json" -d '{"iduser":"123","idbook":"123"}' http://localhost:4000/api/users/:id/users/:id
+ * users/add/book
+ * curl -X PUT -H "Content-Type: application/json" -d '{"iduser":"52671df12e677916a0fc80cb","idbook":"51771fce94d0d117cc333efe"}' http://localhost:4000/api/users/add/book
  */
 
-exports.users.add_book = function(req, res){
-    res.json(req.body);
-  // Users.add_book( req.body, 
-  //   function (data) {
-  //     res.json(data);
-  //   }, 
-  //   error() 
-  // )
+exports.add_book = function(req, res){
+  // res.json(req.body);
+  Users.add_book( req.body, 
+    function (data) {
+      res.json(data);
+    }, 
+    error
+  )
 };

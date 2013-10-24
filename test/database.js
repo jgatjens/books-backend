@@ -1,5 +1,5 @@
 var dbUrl = "library_test";
-var collections = ["books"];
+var collections = ["books","users"];
 
 var db = require("mongojs").connect(dbUrl, collections);
 

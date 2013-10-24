@@ -7,21 +7,17 @@ function error(err) {
   if (err) return;
 }
 
-// BOOKS
-
-exports.books = {};
-
 /*
  * GET books listing.
  * /books
  * curl -X GET http://localhost:4000/api/books
  */
 
-exports.books.all = function(req, res){
+exports.all = function(req, res){
   Books.all( function (data) {
       res.json(data);
     }, 
-    error() 
+    error 
   )
 };
 
@@ -32,12 +28,12 @@ exports.books.all = function(req, res){
  * curl -X GET http://localhost:4000/api/books/:id
  */
 
-exports.books.one = function(req, res){
+exports.one = function(req, res){
   Books.one( req.params.id, 
     function (data) {
       res.json(data);
     }, 
-    error() 
+    error 
   )
 };
 
@@ -48,12 +44,12 @@ exports.books.one = function(req, res){
  * curl -X DELETE http://localhost:4000/api/books/:id
  */
 
-exports.books.remove = function(req, res){
+exports.remove = function(req, res){
   Books.remove( req.params.id, 
     function (data) {
       res.json(data);
     }, 
-    error() 
+    error 
   )
 };
 
@@ -64,12 +60,12 @@ exports.books.remove = function(req, res){
  * curl -X POST -H "Content-Type: application/json" -d '{"title":"xyz","author":"xyz", "description": "xyz"}' http://localhost:4000/api/books
  */
 
-exports.books.create = function(req, res){
+exports.create = function(req, res){
     // res.json(req.body);
   Books.create( req.body, 
     function (data) {
       res.json(data);
     }, 
-    error() 
+    error 
   )
 };

@@ -7,10 +7,10 @@ var Books = function () {
 	 * /books
 	 */
 	
-	var _all = function (sucess, fail) {
+	var _all = function (success, fail) {
 		db.books.find({}, function(err, books){
 		    if (err) fail(err);
-		    sucess(books);
+		    success(books);
 		});
 	}
 
@@ -19,11 +19,11 @@ var Books = function () {
 	 * /books/:id
 	 */
 
-	var _one = function (_id, sucess, fail) {
+	var _one = function (_id, success, fail) {
 		var bookId = db.ObjectId(_id);
 		db.books.find({ "_id": bookId }, function(err, book){
 			if (err) fail(err);
-			sucess(book);
+			success(book);
 		});
 	}
 
@@ -32,17 +32,17 @@ var Books = function () {
 	 * /books/:id
 	 */
 
-	var _remove = function (_id, sucess, fail) {
+	var _remove = function (_id, success, fail) {
 		var bookId = db.ObjectId(_id);
 		db.books.remove({ "_id": bookId }, function(err, book){
 			if (err) fail(err);
 			
 	  		if (book === 1)
-		  		book = { "sucess": true };
+		  		book = { "success": true };
 		  	else 
-		  		book = { "sucess": false };
+		  		book = { "success": false };
 
-	  		sucess(book);
+	  		success(book);
 		});
 	}
 
@@ -52,11 +52,11 @@ var Books = function () {
 	 * /books
 	 */
 
-	_create = function(data, sucess, fail){
+	_create = function(data, success, fail){
 
 	  db.books.save(data, function (err, book) {
 	  		if (err) fail(err);
-	  		sucess(book);
+	  		success(book);
 	  });
 	}
 

@@ -23,7 +23,7 @@ app.configure('development', function () {
   app.use(express.errorHandler());
 });
 
-console.log("Routers", routes);
+// console.log("Routers", routes);
 
 app.get('/', routes.homepage);
 
@@ -38,7 +38,7 @@ app.get('/api/users', routes.users.all);
 app.get('/api/users/:id', routes.users.one);
 app.del('/api/users/:id', routes.users.remove);
 app.post('/api/users/', routes.users.create);
-app.put('/api/users/:id/books/:id', routes.users.add_book);
+app.put('/api/users/add/book', routes.users.add_book);
 
 
 http.createServer(app).listen(app.get('port'), function () {

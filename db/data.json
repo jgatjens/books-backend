@@ -1,3 +1,0 @@
-{ "_id" : { "$oid" : "51771d5a94d0d117cc333efd" }, "title" : "Javascript Patterns", "author" : "bob", "description" : "some description" }
-{ "_id" : { "$oid" : "51771fce94d0d117cc333efe" }, "title" : "Javascript Good Parts", "author" : "John", "description" : "some others description" }
-{ "_id" : { "$oid" : "517766e194d0d117cc333eff" }, "title" : "Nodejs cookbook", "author" : "John John", "description" : " description" }

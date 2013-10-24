@@ -1,4 +1,6 @@
-var db = require("../conf/database.js");
+var db = require("../conf/database.js"),
+	userId = 0, 
+	bookId = 0;
 
 var Users = function () {
 
@@ -7,10 +9,10 @@ var Users = function () {
 	 * /users
 	 */
 	
-	var _all = function (sucess, fail) {
+	var _all = function (success, fail) {
 		db.users.find({}, function(err, users){
 		    if (err) fail(err);
-		    sucess(users);
+		    success(users);
 		});
 	}
 
@@ -19,11 +21,11 @@ var Users = function () {
 	 * /users/:id
 	 */
 
-	var _one = function (_id, sucess, fail) {
+	var _one = function (_id, success, fail) {
 		var userId = db.ObjectId(_id);
 		db.users.find({ "_id": userId }, function(err, user){
 			if (err) fail(err);
-			sucess(user);
+			success(user);
 		});
 	}
 
@@ -32,17 +34,17 @@ var Users = function () {
 	 * /users/:id
 	 */
 
-	var _remove = function (_id, sucess, fail) {
+	var _remove = function (_id, success, fail) {
 		var userId = db.ObjectId(_id);
 		db.users.remove({ "_id": userId }, function(err, user){
 			if (err) fail(err);
 			
 	  		if (user === 1)
-		  		user = { "sucess": true };
+		  		user = { "success": true };
 		  	else 
-		  		user = { "sucess": false };
+		  		user = { "success": false };
 
-	  		sucess(user);
+	  		success(user);
 		});
 	}
 
@@ -51,41 +53,55 @@ var Users = function () {
 	 * /users
 	 */
 
-	_create = function(data, sucess, fail){
+	_create = function(data, success, fail){
 
 	  db.users.save(data, function (err, user) {
 	  		if (err) fail(err);
-	  		sucess(user);
+	  		success(user);
 	  });
 	}
 	
 	/*
 	 * PUT users new book.
-	 * /users/:id/books/:id
+	 * users/add/book
 	 */
 
-	//ObjectId("52671df12e677916a0fc80cb") userid
-	//ObjectId("51771fce94d0d117cc333efe") bookid 
-	_add_book = function(data, sucess, fail){
+	_add_book = function(data, success, fail){
 	
-		var userId = db.ObjectId(data.userid);	
-		var bookId = db.ObjectId(data.bookid);	
+		userId = db.ObjectId(data.iduser),
+		bookId = db.ObjectId(data.idbook);	
+
+		// checks if book exist 
+		db.books.findOne({ _id: bookId }, function (err, book) {
+			// console.log("book", book);
+			if (err) fail(err);
+
+			if (!book){
+				var msg = { "success": false, "errorMessage": "The book you are trying to associate does not exist"};
+				success(msg);		
+			}
+		});	
 
 		// checks if user already contains the book
-		// db.users.findOne({ _id: ObjectId("52671df12e677916a0fc80cb"), "books": ObjectId("51771fce94d0d117cc333efe") });
-		var result = db.users.findOne({ _id: userid, books: bookId });
+		db.users.findOne({ _id: userId, books: bookId }, function (err, user) {
+			// console.log("user", user);
+			if (err) fail(err);
+			
+			if (user) {
+				var msg = { "success": false, "errorMessage": "User already contains the book you are trying to add"};
+				success(msg);
+			}
+		});
 
-		console.log(result);
-
-
-		// db.users.findAndModify({
-		//     query: { _id: userid },
-		//     update: $push: { "books": bookId  },
-		//     new: true
-		// }, function(err, user) {
-	 //  		if (err) fail(err);
-	 //  		sucess(user);
-		// });		
+		// success(data);
+		db.users.findAndModify({
+		    query: { _id: userId },
+		    update: { $push: { "books": bookId  } },
+		    new: true
+		}, function(err, user) {
+	  		if (err) fail(err);
+	  		success(user);
+		});		
 	}
 
 	return {
