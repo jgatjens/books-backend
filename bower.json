@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jgatjens/books-backend",
+  "authors": [
+    "Jairo Gatjens <jgatjens@gmail.com>"
+  ],
+  "description": "Book's App",
+  "main": "app.js",
+  "keywords": [
+    "Restful",
+    "api",
+    "mongodb",
+    "nodejs",
+    "backbonejs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.0.3",
+    "backbone": "~1.1.0",
+    "underscore": "~1.5.2"
+  }
+}

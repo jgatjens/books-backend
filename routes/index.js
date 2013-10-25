@@ -5,7 +5,7 @@ var rbooks    = require("../routes/books.js"),
 
 // HomePage
 exports.homepage = function (req, res) { 
-  res.send('Books restful api \n') 
+  res.render("index")
 }
 
 exports.books    = rbooks;
