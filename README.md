@@ -42,6 +42,17 @@ git clone [git-repo-url] backend
 cd backend
 npm install
 ```
+
+Levantar mongodb
+--------------
+
+```sh
+mongod
+```
+
+Correr backend
+--------------
+
 ```sh
 node app
 ```

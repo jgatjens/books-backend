@@ -1,3 +1,3 @@
-restore test database open a terminal window and type:
+Para restaurar la base de datos habran un terminal y corran:
 
-	mongorestore library
+	mongorestore path/to/db/library
