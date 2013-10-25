@@ -1,3 +1,3 @@
-Para restaurar la base de datos habran un terminal y corran:
+Para restaurar la base de datos abra un terminal y corra:
 
 	mongorestore path/to/db/library
