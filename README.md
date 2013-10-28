@@ -57,17 +57,12 @@ Correr backend
 node app
 ```
 
-## Frontend - Sprint 1 ( viernes 25 de octubre ) 
-- crear repositorio para el frontend en su cuenta de github
-- instalar nodejs
-- crear archivo de configuracion de gruntjs que permita:
- - correr sass
- - livereload
- - preview server
-- *instalar bower (si van a utilizar jquery)
- - incluir la ultima version de jquery
- - cambiar el nombre del directorio donde bower baja las depencias por "vendors"
-- Instalar mongodb
+Correr test
+--------------
+
+```sh
+mocha
+```
 
   
     

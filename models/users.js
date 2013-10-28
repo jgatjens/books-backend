@@ -63,7 +63,7 @@ var Users = function () {
 	
 	/*
 	 * PUT users new book.
-	 * users/add/book
+	 * users/book
 	 */
 
 	_add_book = function(data, success, fail){
@@ -93,7 +93,7 @@ var Users = function () {
 			}
 		});
 
-		// success(data);
+		// update user collection
 		db.users.findAndModify({
 		    query: { _id: userId },
 		    update: { $push: { "books": bookId  } },
