@@ -1,9 +1,8 @@
 var db = require("../conf/database.js"),
-    Books = require("../models/books.js").books;
-
+    Books = require("../models/books.js")(db);
 
 function error(err) {
-  console.log("error", err);
+  console.log("error", err, "\n");
   if (err) return;
 }
 
@@ -41,7 +40,7 @@ exports.one = function(req, res){
 /*
  * DELETE book specific.
  * /books/:id
- * curl -X DELETE http://localhost:4000/api/books/:id
+ * curl -X DELETE http://localhost:4000/api/books/52682f94bc8689d9c7000001
  */
 
 exports.remove = function(req, res){
@@ -55,13 +54,30 @@ exports.remove = function(req, res){
 
 
 /*
+ * PUT books update.
+ * /books
+ * curl -X PUT -H "Content-Type: application/json" -d '{"_id":"5270879f2e0f04a09459e58f", "title":"a","author":"a", "desc": "a"}' http://localhost:4000/api/books
+ */
+
+exports.update = function(req, res){
+  // res.json(req.body);
+  Books.update( req.body, 
+    function (data) {
+      res.json(data);
+    }, 
+    error 
+  )
+};
+
+
+/*
  * POST books new.
  * /books
- * curl -X POST -H "Content-Type: application/json" -d '{"title":"xyz","author":"xyz", "description": "xyz"}' http://localhost:4000/api/books
+ * curl -X POST -H "Content-Type: application/json" -d '{"title":"xyz","author":"xyz", "desc": "xyz"}' http://localhost:4000/api/books
  */
 
 exports.create = function(req, res){
-    // res.json(req.body);
+  // res.json(req.body);
   Books.create( req.body, 
     function (data) {
       res.json(data);

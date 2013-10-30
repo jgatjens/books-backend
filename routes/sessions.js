@@ -1,5 +1,5 @@
 var db = require("../conf/database.js"),
-    Sessions = require("../models/sessions.js").sessions;
+    Sessions = require("../models/sessions.js")(db);
 
 
 function error(err) {

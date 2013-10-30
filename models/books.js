@@ -1,6 +1,8 @@
-var db = require("../conf/database.js");
+module.exports = function(db){
 
-var Books = function () {
+	var resJson =  function(result) {
+		return result === 1 ? { "success": true } : { "success": false };
+	}
 
 	/*
 	 * GET books listing.
@@ -21,10 +23,32 @@ var Books = function () {
 
 	var _one = function (_id, success, fail) {
 		var bookId = db.ObjectId(_id);
-		db.books.find({ "_id": bookId }, function(err, book){
+
+		db.books.find({ _id: bookId }, function(err, book){
 			if (err) fail(err);
 			success(book);
 		});
+	}
+
+	/*
+	 * PUT books new book.
+	 * /books
+	 */
+	 //
+	// curl -X PUT -H "Content-Type: application/json" -d '{"_id":"5270879f2e0f04a09459e58f", "title":"a","author":"a", "desc": "a"}' http://localhost:4000/api/books
+	var _update = function(data, success, fail){
+		// console.log(data);
+		var bookId = db.ObjectId(data._id.toHexString());
+
+		// Removing primary key
+		delete data._id;
+
+		// update user collection
+		db.books.update({ _id: bookId }, data, function(err, book) {
+	  		if (err) fail(err);	
+	  		success(resJson(book));
+		});		
+			
 	}
 
 	/*
@@ -34,15 +58,10 @@ var Books = function () {
 
 	var _remove = function (_id, success, fail) {
 		var bookId = db.ObjectId(_id);
-		db.books.remove({ "_id": bookId }, function(err, book){
-			if (err) fail(err);
-			
-	  		if (book === 1)
-		  		book = { "success": true };
-		  	else 
-		  		book = { "success": false };
 
-	  		success(book);
+		db.books.remove({ _id: bookId }, function(err, book){
+			if (err) fail(err);
+  		success(resJson(book));
 		});
 	}
 
@@ -64,9 +83,8 @@ var Books = function () {
 		all: _all,
 		one: _one,
 		create: _create,
+		update: _update,
 		remove: _remove
 	}
 
-}();
-
-exports.books = Books;
+};

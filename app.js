@@ -33,15 +33,16 @@ app.get('/', routes.homepage);
 // Books
 app.get('/api/books', routes.books.all);
 app.get('/api/books/:id', routes.books.one);
-app.del('/api/books/:id', routes.books.remove);
 app.post('/api/books', routes.books.create);
+app.put('/api/books', routes.books.update);
+app.del('/api/books/:id', routes.books.remove);
 
 // Users
 app.get('/api/users', routes.users.all);
 app.get('/api/users/:id', routes.users.one);
-app.del('/api/users/:id', routes.users.remove);
 app.post('/api/users/', routes.users.create);
 app.put('/api/users/add/book', routes.users.add_book);
+app.del('/api/users/:id', routes.users.remove);
 
 
 http.createServer(app).listen(app.get('port'), function () {

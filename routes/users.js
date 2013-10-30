@@ -1,5 +1,5 @@
 var db = require("../conf/database.js"),
-    Users = require("../models/users.js").users;
+    Users = require("../models/users.js")(db);
 
 
 function error(err) {

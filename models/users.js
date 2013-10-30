@@ -1,8 +1,4 @@
-var db = require("../conf/database.js"),
-	userId = 0, 
-	bookId = 0;
-
-var Users = function () {
+module.exports = function(db){
 
 	/*
 	 * GET users listing.
@@ -68,8 +64,8 @@ var Users = function () {
 
 	_add_book = function(data, success, fail){
 	
-		userId = db.ObjectId(data.iduser),
-		bookId = db.ObjectId(data.idbook);	
+		var userId = db.ObjectId(data.iduser),
+	  		bookId = db.ObjectId(data.idbook);	
 
 		// checks if book exist 
 		db.books.findOne({ _id: bookId }, function (err, book) {
@@ -112,6 +108,4 @@ var Users = function () {
 		add_book: _add_book
 	}
 
-}();
-
-exports.users = Users;
+};
