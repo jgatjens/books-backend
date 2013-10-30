@@ -34,8 +34,7 @@ module.exports = function(db){
 	 * PUT books new book.
 	 * /books
 	 */
-	 //
-	// curl -X PUT -H "Content-Type: application/json" -d '{"_id":"5270879f2e0f04a09459e58f", "title":"a","author":"a", "desc": "a"}' http://localhost:4000/api/books
+	
 	var _update = function(data, success, fail){
 		// console.log(data);
 		var bookId = db.ObjectId(data._id.toHexString());
@@ -47,8 +46,7 @@ module.exports = function(db){
 		db.books.update({ _id: bookId }, data, function(err, book) {
 	  		if (err) fail(err);	
 	  		success(resJson(book));
-		});		
-			
+		});			
 	}
 
 	/*

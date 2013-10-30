@@ -74,12 +74,28 @@ exports.create = function(req, res){
 /*
  * PUT user new book.
  * users/add/book
- * curl -X PUT -H "Content-Type: application/json" -d '{"iduser":"52671df12e677916a0fc80cb","idbook":"51771fce94d0d117cc333efe"}' http://localhost:4000/api/users/add/book
+ * curl -X PUT http://localhost:4000/api/users/526719ab2e677916a0fc80ca/51771fce94d0d117cc333efe
  */
 
 exports.add_book = function(req, res){
   // res.json(req.body);
-  Users.add_book( req.body, 
+  Users.add_book(req.params.user, req.params.book, 
+    function (data) {
+      res.json(data);
+    }, 
+    error
+  )
+};
+
+/*
+ * DELETE user new book.
+ * users/add/book
+ * curl -X DELETE http://localhost:4000/api/users/526719ab2e677916a0fc80ca/51771fce94d0d117cc333efe
+ */
+
+exports.remove_book = function(req, res){
+  // res.json(req.body);
+  Users.remove_book(req.params.user, req.params.book, 
     function (data) {
       res.json(data);
     }, 

@@ -1,5 +1,9 @@
 module.exports = function(db){
 
+	var resJson =  function(result) {
+		return result === 1 ? { "success": true } : { "success": false };
+	}
+
 	/*
 	 * GET users listing.
 	 * /users
@@ -19,7 +23,7 @@ module.exports = function(db){
 
 	var _one = function (_id, success, fail) {
 		var userId = db.ObjectId(_id);
-		db.users.find({ "_id": userId }, function(err, user){
+		db.users.find({ _id: userId }, function(err, user){
 			if (err) fail(err);
 			success(user);
 		});
@@ -32,15 +36,9 @@ module.exports = function(db){
 
 	var _remove = function (_id, success, fail) {
 		var userId = db.ObjectId(_id);
-		db.users.remove({ "_id": userId }, function(err, user){
+		db.users.remove({ _id: userId }, function(err, user){
 			if (err) fail(err);
-			
-	  		if (user === 1)
-		  		user = { "success": true };
-		  	else 
-		  		user = { "success": false };
-
-	  		success(user);
+  		success(resJson(user));
 		});
 	}
 
@@ -62,10 +60,10 @@ module.exports = function(db){
 	 * users/book
 	 */
 
-	_add_book = function(data, success, fail){
+	_add_book = function(user, book, success, fail){
 	
-		var userId = db.ObjectId(data.iduser),
-	  		bookId = db.ObjectId(data.idbook);	
+		var userId = db.ObjectId(user),
+	  		bookId = db.ObjectId(book);	
 
 		// checks if book exist 
 		db.books.findOne({ _id: bookId }, function (err, book) {
@@ -99,13 +97,47 @@ module.exports = function(db){
 	  		success(user);
 		});		
 	}
+	
+
+	/*
+	 * DELETE users a book.
+	 * users/book
+	 */
+
+	_remove_book = function(user, book, success, fail){
+	
+		var userId = db.ObjectId(user),
+	  		bookId = db.ObjectId(book);	
+
+		// checks if user contains the book
+		db.users.findOne({ _id: userId, books: bookId }, function (err, user) {
+
+			if (err) fail(err);
+			
+			if (!user) {
+				var msg = { "success": false, "errorMessage": "User does not contains the book you are trying to remove"};
+				success(msg);
+			}
+		});
+
+		// update user collection
+		db.users.findAndModify({
+		    query: { _id: userId },
+		    update: { $pull: { "books": bookId  } },
+		    new: true
+		}, function(err, user) {
+	  		if (err) fail(err);
+	  		success(user);
+		});		
+	}
 
 	return {
 		all: _all,
 		one: _one,
 		create: _create,
 		remove: _remove,
-		add_book: _add_book
+		add_book: _add_book,
+		remove_book: _remove_book
 	}
 
 };

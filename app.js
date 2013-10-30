@@ -41,7 +41,8 @@ app.del('/api/books/:id', routes.books.remove);
 app.get('/api/users', routes.users.all);
 app.get('/api/users/:id', routes.users.one);
 app.post('/api/users/', routes.users.create);
-app.put('/api/users/add/book', routes.users.add_book);
+app.put('/api/users/:user/:book', routes.users.add_book);
+app.del('/api/users/:user/:book', routes.users.remove_book);
 app.del('/api/users/:id', routes.users.remove);
 
 
