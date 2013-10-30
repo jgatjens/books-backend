@@ -26,7 +26,13 @@ app.configure('development', function () {
   app.use(express.errorHandler());
 });
 
-// console.log("Routers", routes);
+// Allow request from others server
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 
 app.get('/', routes.homepage);
 
