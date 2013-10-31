@@ -1,6 +1,7 @@
 // 
 var BookModel = Backbone.Model.extend({
-	idAttribute: "_id"
+	idAttribute: "_id",
+	urlRoot: 'api/books'
 });
 
 var BookCollection = Backbone.Collection.extend({

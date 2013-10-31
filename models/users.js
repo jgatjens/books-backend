@@ -1,66 +1,20 @@
+var _ = require("underscore");
+
 module.exports = function(db){
 
-	var resJson =  function(result) {
-		return result === 1 ? { "success": true } : { "success": false };
-	}
-
-	/*
-	 * GET users listing.
-	 * /users
-	 */
-	
-	var _all = function (success, fail) {
-		db.users.find({}, function(err, users){
-		    if (err) fail(err);
-		    success(users);
-		});
-	}
-
-	/*
-	 * GET user specific.
-	 * /users/:id
-	 */
-
-	var _one = function (_id, success, fail) {
-		var userId = db.ObjectId(_id);
-		db.users.find({ _id: userId }, function(err, user){
-			if (err) fail(err);
-			success(user);
-		});
-	}
-
-	/*
-	 * DELETE user specific.
-	 * /users/:id
-	 */
-
-	var _remove = function (_id, success, fail) {
-		var userId = db.ObjectId(_id);
-		db.users.remove({ _id: userId }, function(err, user){
-			if (err) fail(err);
-  		success(resJson(user));
-		});
-	}
-
-	/*
-	 * POST users new.
-	 * /users
-	 */
-
-	_create = function(data, success, fail){
-
-	  db.users.save(data, function (err, user) {
-	  		if (err) fail(err);
-	  		success(user);
-	  });
+	if (!db) {
+		db =  require("../conf/database.js");
 	}
 	
-	/*
+	var BaseModel = require('./base')(db);
+	var userModel = _.extend(BaseModel.prototype, { modelName: "users"});
+
+	/*/*
 	 * PUT users new book.
 	 * users/book
 	 */
 
-	_add_book = function(user, book, success, fail){
+	userModel.add_book = function(user, book, success, fail){
 	
 		var userId = db.ObjectId(user),
 	  		bookId = db.ObjectId(book);	
@@ -104,7 +58,7 @@ module.exports = function(db){
 	 * users/book
 	 */
 
-	_remove_book = function(user, book, success, fail){
+	userModel.remove_book = function(user, book, success, fail){
 	
 		var userId = db.ObjectId(user),
 	  		bookId = db.ObjectId(book);	
@@ -131,13 +85,7 @@ module.exports = function(db){
 		});		
 	}
 
-	return {
-		all: _all,
-		one: _one,
-		create: _create,
-		remove: _remove,
-		add_book: _add_book,
-		remove_book: _remove_book
-	}
+
+	return userModel;
 
 };

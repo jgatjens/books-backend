@@ -1,6 +1,4 @@
-var db = require("../conf/database.js"),
-    Sessions = require("../models/sessions.js")(db);
-
+var Sessions = require("../models/sessions.js");
 
 function error(err) {
   console.log("error", err);
@@ -41,7 +39,7 @@ exports.remove = function(req, res){
 /*
  * POST sessions new.
  * /sessions
- * curl -X POST -H "Content-Type: application/json" -d '{"iduser":"123","token":"2323232"}' http://localhost:4000/api/sessions
+ * curl -X POST -H "Content-Type: application/json" -d '{"_id":"123","token":"2323232"}' http://localhost:4000/api/sessions
  */
 
 exports.create = function(req, res){
@@ -50,5 +48,21 @@ exports.create = function(req, res){
       res.json(data);
     }, 
     error
+  )
+};
+
+/*
+ * PUT sessions update.
+ * /sessions
+ * curl -X PUT -H "Content-Type: application/json" -d '{"_id":"1234", "" }' http://localhost:4000/api/sessions
+ */
+
+exports.update = function(req, res){
+  // res.json(req.body);
+  Books.update( req.body, 
+    function (data) {
+      res.json(data);
+    }, 
+    error 
   )
 };

@@ -1,5 +1,4 @@
-var db = require("../conf/database.js"),
-    Users = require("../models/users.js")(db);
+var Users = require("../models/users.js");
 
 
 function error(err) {
@@ -68,6 +67,22 @@ exports.create = function(req, res){
       res.json(data);
     }, 
     error
+  )
+};
+
+/*
+ * PUT users update.
+ * /users
+ * curl -X PUT -H "Content-Type: application/json" -d '{"_id":"5270879f2e0f04a09459e58f", "name":"john"}' http://localhost:4000/api/users
+ */
+
+exports.update = function(req, res){
+  // res.json(req.body);
+  Users.update( req.body, 
+    function (data) {
+      res.json(data);
+    }, 
+    error 
   )
 };
 

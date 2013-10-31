@@ -1,5 +1,4 @@
-var db = require("../conf/database.js"),
-    Books = require("../models/books.js")(db);
+var Books = require("../models/books.js");
 
 function error(err) {
   console.log("error", err, "\n");
@@ -61,7 +60,7 @@ exports.remove = function(req, res){
 
 exports.update = function(req, res){
   // res.json(req.body);
-  Books.update( req.body, 
+  Books.update(req.params.id, req.body, 
     function (data) {
       res.json(data);
     }, 
