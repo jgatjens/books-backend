@@ -14,7 +14,7 @@ module.exports = function(db){
 	 * users/book
 	 */
 
-	userModel.add_book = function(user, book, success, fail){
+	/*userModel.add_book = function(user, book, success, fail){
 	
 		var userId = db.ObjectId(user),
 	  		bookId = db.ObjectId(book);	
@@ -51,14 +51,14 @@ module.exports = function(db){
 	  		success(user);
 		});		
 	}
-	
+	*/
 
 	/*
 	 * DELETE users a book.
 	 * users/book
 	 */
 
-	userModel.remove_book = function(user, book, success, fail){
+	/*userModel.remove_book = function(user, book, success, fail){
 	
 		var userId = db.ObjectId(user),
 	  		bookId = db.ObjectId(book);	
@@ -84,7 +84,7 @@ module.exports = function(db){
 	  		success(user);
 		});		
 	}
-
+*/
 
 	return userModel;
 

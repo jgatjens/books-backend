@@ -7,7 +7,8 @@ module.exports = function(db){
 	}
 	
 	var BaseModel = require('./base')(db);
-	var sessionModel = _.extend(BaseModel.prototype, { modelName: "books"});
+	var sessionModel = _.extend(BaseModel.prototype, { modelName: "sessions"});
+
 
 	return sessionModel;
 };

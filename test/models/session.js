@@ -1,7 +1,8 @@
 var db  = require("../database.js"),
 	sessionModel = require("../../models/sessions.js")(db);
 
-	
+// console.log(sessionModel);	
+
 describe("Models - Session", function(){
 
   	//holds a customer to use in the each test  
@@ -47,8 +48,8 @@ describe("Models - Session", function(){
 		
 		sessionModel.one(_id, function(data, err){
 
-			data[0].iduser.should.equal("iduser");
-			data[0].token.should.equal("token");
+			data.iduser.should.equal("iduser");
+			data.token.should.equal("token");
 			
 			done();
 		}, function(message){

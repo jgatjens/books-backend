@@ -1,4 +1,5 @@
-var Books = require("../models/books.js");
+var BookModel = require("../models/books"),
+    Books = new BookModel();
 
 function error(err) {
   console.log("error", err, "\n");
@@ -12,6 +13,8 @@ function error(err) {
  */
 
 exports.all = function(req, res){
+  
+
   Books.all( function (data) {
       res.json(data);
     }, 
@@ -82,5 +85,38 @@ exports.create = function(req, res){
       res.json(data);
     }, 
     error 
+  )
+};
+
+
+/*
+ * PUT user new book.
+ * book/:id/:iduser
+ * curl -X PUT http://localhost:4000/api/books/51771fce94d0d117cc333efe/526719ab2e677916a0fc80ca
+ */
+
+exports.add_user = function(req, res){
+  // res.json(req.body);
+  Books.add_user(req.params.book, req.params.user, 
+    function (data) {
+      res.json(data);
+    }, 
+    error
+  )
+};
+
+/*
+ * DELETE user new user.
+ * books/:id/:idsuer
+ * curl -X DELETE http://localhost:4000/api/books/51771fce94d0d117cc333efe/526719ab2e677916a0fc80ca
+ */
+
+exports.remove_user = function(req, res){
+  // res.json(req.body);
+  Books.remove_user(req.params.book, req.params.user, 
+    function (data) {
+      res.json(data);
+    }, 
+    error
   )
 };

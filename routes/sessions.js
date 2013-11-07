@@ -1,4 +1,5 @@
-var Sessions = require("../models/sessions.js");
+var SessionModel = require("../models/sessions.js"),
+    Sessions = new SessionModel();
 
 function error(err) {
   console.log("error", err);

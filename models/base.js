@@ -40,12 +40,26 @@ module.exports = function (db) {
 	 */
 
 	BaseModel.prototype.one = function (_id, success, fail) {
+
 		var id = db.ObjectId(_id);
-		db[this.modelName].find({ _id: id }, function(err, coll){
+		db[this.modelName].findOne({ _id: id }, function(err, coll){
 			if (err) fail(err);
 			success(coll);
 		});
 	};
+
+	/*
+	 * GET any model.
+	 */
+
+	BaseModel.prototype.findOne = function (success, fail) {
+		db[this.modelName].findOne({}, function(err, coll){
+			if (err) fail(err);
+			success(coll);
+		});
+	};
+
+
 
 	/*
 	 * PUT new model.

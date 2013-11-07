@@ -7,8 +7,7 @@ describe("Models - Users", function(){
   
   var user = {
 		name: "John Doe", 
-		avatar: "https://lh6.googleusercontent.com/-1y868vOoWek/AAAAAAAAAAI/AAAAAAAAAoM/io8W15dlwW4/s120-c/photo.jpg",
-		books: []
+		avatar: "--------",
 	}
 
 	it("Add a user", function(done){
@@ -17,7 +16,7 @@ describe("Models - Users", function(){
 
 			_id = data._id.toHexString();
 			data.name.should.equal("John Doe");
-			data.avatar.should.equal("https://lh6.googleusercontent.com/-1y868vOoWek/AAAAAAAAAAI/AAAAAAAAAoM/io8W15dlwW4/s120-c/photo.jpg");
+			data.avatar.should.equal("--------");
 
 			currentUser = data;
 
@@ -46,8 +45,8 @@ describe("Models - Users", function(){
 		
 		userModel.one(_id, function(data, err){
 
-			data[0].name.should.equal("John Doe");
-			data[0].avatar.should.equal("https://lh6.googleusercontent.com/-1y868vOoWek/AAAAAAAAAAI/AAAAAAAAAoM/io8W15dlwW4/s120-c/photo.jpg");
+			data.name.should.equal("John Doe");
+			data.avatar.should.equal("--------");
 			
 			done();
 		}, function(message){

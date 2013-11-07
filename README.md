@@ -22,13 +22,8 @@ Estas son las tecnologias a usar:
 
 * [Nodejs]  - javascript en el backend.
 * [mongodb] - base de datos nosql
-* [Gruntjs] - organizador de tareas 
 * [Bower]   - manejador de dependencias en el frontend 
-* [Express] - node.js framework  [@tjholowaychuk]
-* [Sass] - pre compilador de css
-* [jQuery] - duh 
-
-
+* [Express] - node.js framework  [@tjholowaychuk] 
 
 Dependencias
 --------------
@@ -43,21 +38,21 @@ cd backend
 npm install
 ```
 
-Levantar mongodb
+run mongodb
 --------------
 
 ```sh
 mongod
 ```
 
-Correr backend
+run backend
 --------------
 
 ```sh
 node app
 ```
 
-Correr test
+run tests
 --------------
 
 ```sh
