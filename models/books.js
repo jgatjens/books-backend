@@ -1,16 +1,12 @@
-var _ = require("underscore");
+var _ 	= require("underscore"),
+		db 	= require("../conf/database.js");
 
-module.exports = function(db){
-
-	var Users = require("./users")(db);
-	
-	if (!db) {
-		db =  require("../conf/database.js");
-	}
+module.exports = function(){
 
 	// Base CRUD
-	var BaseModel = require('./base')(db);
-
+	var BaseModel = require('./base')(db),
+			Users = require("./users")(db);
+	
 	// Set collection type
 	var bookModel = _.extend(BaseModel.prototype, { modelName: "books" });
 

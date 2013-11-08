@@ -1,10 +1,7 @@
-var _ = require("underscore");
+var _ 	= require("underscore"),
+		db 	= require("../conf/database.js");
 
-module.exports = function(db){
-
-	if (!db) {
-		db =  require("../conf/database.js");
-	}
+module.exports = function(){
 	
 	var BaseModel = require('./base')(db);
 	var sessionModel = _.extend(BaseModel.prototype, { modelName: "sessions"});

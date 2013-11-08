@@ -65,6 +65,7 @@ exports.remove = function(req, res){
 exports.create = function(req, res){
   users.create( req.body, 
     function (data) {
+      console.log(data);
       res.json(data);
     }, 
     error

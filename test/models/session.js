@@ -1,5 +1,5 @@
-var db  = require("../database.js"),
-	sessionModel = require("../../models/sessions.js")(db);
+var Session = require("../../models/sessions.js"),
+		sessionModel = new Session();
 
 // console.log(sessionModel);	
 

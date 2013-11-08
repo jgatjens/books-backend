@@ -1,5 +1,5 @@
-var db  = require("../database.js"),
-	userModel = require("../../models/users.js")(db);
+var User = require("../../models/users.js"),
+		userModel = new User();
 
 describe("Models - Users", function(){
  
