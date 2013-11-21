@@ -48,7 +48,7 @@ app.del('/api/books/:book/:user', routes.books.remove_user);
 app.del('/api/books/:id', routes.books.remove);
 
 // Users
-// app.get('/api/users', routes.users.all);
+app.get('/api/users', routes.users.all);
 app.get('/api/users/:id', routes.users.one);
 app.post('/api/users/', routes.users.create);
 app.put('/api/users/:id', routes.users.update);

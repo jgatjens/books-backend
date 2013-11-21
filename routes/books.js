@@ -79,7 +79,7 @@ exports.update = function(req, res){
  */
 
 exports.create = function(req, res){
-  // res.json(req.body);
+  console.log(req.body);
   Books.create( req.body, 
     function (data) {
       res.json(data);

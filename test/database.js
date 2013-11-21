@@ -2,9 +2,9 @@
 var MongoClient = require('mongodb').MongoClient,
 		mongodb = null;
 
-describe("Books Database", function() {
+describe("Library Database", function() {
 		
-		beforeEach(function(done){
+		before(function(done){
 
 			MongoClient.connect('mongodb://127.0.0.1:27017', function(err, db) {
 			  if(err)	{
@@ -18,7 +18,6 @@ describe("Books Database", function() {
 		});
   	
 		it("Do we have connexion to the mongo database", function(done) {
-
 				mongodb.serverConfig.connected.should.be.equal(true);
 				done();	
 		});
