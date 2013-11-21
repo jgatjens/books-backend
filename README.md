@@ -22,7 +22,6 @@ Estas son las tecnologias a usar:
 
 * [Nodejs]  - javascript en el backend.
 * [mongodb] - base de datos nosql
-* [Bower]   - manejador de dependencias en el frontend 
 * [Express] - node.js framework  [@tjholowaychuk] 
 
 Dependencias
