@@ -30,10 +30,18 @@ app.configure('development', function () {
 
 // Allow request from others server
 app.all('*', function(req, res, next) {
+
+  if (!req.is('json') && req.method == "POST") {
+    var msg = { "success": false, "errorMessage": "We expect Content-type to be application/json"}
+    res.json(msg);
+  }
+
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
+
 });
+
 
 
 app.get('/', routes.homepage);

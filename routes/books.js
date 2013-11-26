@@ -1,9 +1,10 @@
 var BookModel = require("../models/books"),
     Books = new BookModel();
 
-function error(err) {
-  console.log("error", err, "\n");
-  if (err) return;
+function error(res, err) {
+  // console.log("error", err, "\n");
+  res.json(err);
+  // if (err) return;
 }
 
 /*
@@ -18,7 +19,9 @@ exports.all = function(req, res){
   Books.all( function (data) {
       res.json(data);
     }, 
-    error 
+    function(data) {
+      error(res, data) 
+    } 
   )
 };
 
@@ -34,7 +37,9 @@ exports.one = function(req, res){
     function (data) {
       res.json(data);
     }, 
-    error 
+    function(data) {
+      error(res, data) 
+    }
   )
 };
 
@@ -50,7 +55,9 @@ exports.remove = function(req, res){
     function (data) {
       res.json(data);
     }, 
-    error 
+    function(data) {
+      error(res, data) 
+    }  
   )
 };
 
@@ -67,7 +74,9 @@ exports.update = function(req, res){
     function (data) {
       res.json(data);
     }, 
-    error 
+    function(data) {
+      error(res, data) 
+    }  
   )
 };
 
@@ -84,7 +93,9 @@ exports.create = function(req, res){
     function (data) {
       res.json(data);
     }, 
-    error 
+    function(data) {
+      error(res, data) 
+    } 
   )
 };
 
@@ -101,7 +112,9 @@ exports.add_user = function(req, res){
     function (data) {
       res.json(data);
     }, 
-    error
+    function(data) {
+      error(res, data) 
+    } 
   )
 };
 
@@ -117,6 +130,8 @@ exports.remove_user = function(req, res){
     function (data) {
       res.json(data);
     }, 
-    error
+    function(data) {
+      error(res, data) 
+    } 
   )
 };

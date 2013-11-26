@@ -17,10 +17,17 @@ module.exports = function(){
 
 	bookModel.add_user = function(bookid, userid, success, fail){
 		
-		
-		var userId = db.ObjectId(userid),
-	  		bookId = db.ObjectId(bookid),
-	  		error = false;	
+		try {
+			
+			var userId = db.ObjectId(userid),
+	  			bookId = db.ObjectId(bookid),
+	  			error = false;	
+
+		} catch(err) {
+			var msg = { success: false, msg: "Argument passed in must be a single String of 12 bytes or a string of 24 hex characters" }
+			fail(msg);
+		}	
+
 
 		// checks if book exist 
 		bookModel.one(bookid, function (book) {
@@ -85,10 +92,16 @@ module.exports = function(){
 	 */
 
 	bookModel.remove_user = function(bookid, userid, success, fail){
-	
-		var userId = db.ObjectId(userid),
-	  		bookId = db.ObjectId(bookid),
-	  		error = false;	
+		
+		try {
+			var userId = db.ObjectId(userid),
+		  		bookId = db.ObjectId(bookid),
+		  		error = false;	
+		} catch(err) {
+			var msg = { success: false, msg: "Argument passed in must be a single String of 12 bytes or a string of 24 hex characters" }
+			fail(msg);
+		}
+		
 
 	  // checks if book already contains the user
 		db.books.find({ _id: bookId, "user._id": userId  }, function (err, book) {

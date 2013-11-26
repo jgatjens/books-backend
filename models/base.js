@@ -41,7 +41,13 @@ module.exports = function (db) {
 
 	BaseModel.prototype.one = function (_id, success, fail) {
 
-		var id = db.ObjectId(_id);
+		try {
+			var id = db.ObjectId(_id);
+		} catch(err) {
+			var msg = { success: false, msg: "Argument passed in must be a single String of 12 bytes or a string of 24 hex characters" }
+			fail(msg);
+		}
+
 		db[this.modelName].findOne({ _id: id }, function(err, coll){
 			if (err) fail(err);
 			success(coll);
@@ -68,8 +74,13 @@ module.exports = function (db) {
 	
 	BaseModel.prototype.update = function(_id, data, success, fail){
 
-		var id = db.ObjectId(_id);
-		
+		try {
+			var id = db.ObjectId(_id);
+		} catch(err) {
+			var msg = { success: false, msg: "Argument passed in must be a single String of 12 bytes or a string of 24 hex characters" }
+			fail(msg);
+		}
+
 		// Removing primary key
 		delete data._id;
 
@@ -86,7 +97,13 @@ module.exports = function (db) {
 	 */
 
 	BaseModel.prototype.remove = function (_id, success, fail) {
-		var id = db.ObjectId(_id);
+		
+		try {
+			var id = db.ObjectId(_id);
+		} catch(err) {
+			var msg = { success: false, msg: "Argument passed in must be a single String of 12 bytes or a string of 24 hex characters" }
+			fail(msg);
+		}
 
 		db[this.modelName].remove({ _id: id }, function(err, coll){
 			if (err) fail(err);
