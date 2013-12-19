@@ -1,7 +1,7 @@
 Book's App 
 =========
 
-Book es una aplicación HTML5 que nos permetiria:
+Book es una aplicación HTML5 que nos permitiria:
 
   - obtener bases solidas de Javascript
   - trabajar con flujos reales
