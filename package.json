@@ -22,7 +22,7 @@
     "jade": "~0.35.0",
     "mongojs": "~0.9.6",
     "logfmt": "~0.18.1",
-    "bower": "0.6.x"
+    "bower": "1.2.8"
   },
   "devDependencies": {
     "should": "2.0.1",
