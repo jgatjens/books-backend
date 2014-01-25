@@ -1,4 +1,4 @@
 node_modules
 .DS_Store
 docs
-public/js/vendor
+bower_components

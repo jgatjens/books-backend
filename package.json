@@ -13,7 +13,7 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install",
+    "postinstall": "./node_modules/bower/bin/bower install jquery backbone underscore --config.cwd=public",
     "test": "make test"
   },
   "dependencies": {
