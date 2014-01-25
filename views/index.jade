@@ -1,4 +1,137 @@
 extends layout
 
 block content
-  h1 Book's App Restful
+  div.container
+    div.page-header
+      h2
+        span.glyphicon.glyphicon-book
+        |  Hangar Book's api
+      p.leadBasic Documentation
+
+    h4 Books Collection
+    table.table.table-bordered.table-responsive
+      thead
+        tr
+          th Method
+          th Domain + Url
+          th Descriptión
+          th Parameters
+        tbody
+          tr
+            td
+              span.label.label-primary GET
+            td
+              span.label.label-info api/v1/books
+            td get all books
+            td
+              span.label.label-primary none
+          tr
+            td
+              span.label.label-primary GET
+            td
+              span.label.label-info /api/v1/books/:id
+            td get specific book
+            td
+              span.label.label-primary none
+          tr
+            td
+              span.label.label-success POST
+            td
+              span.label.label-info /api/v1/books
+            td new book
+            td json object
+          tr
+            td
+              span.label.label-warning PUT
+            td
+              span.label.label-info /api/v1/books/:id
+            td update specific book
+            td json object
+          tr
+            td
+              span.label.label-danger DELETE
+            td
+              span.label.label-info /api/v1/books/:id
+            td delete specific book
+            td
+              span.label.label-primary none
+
+    h4 Users Collection
+    table.table.table-bordered.table-responsive
+      thead
+        tr
+          th Method
+          th Domain + Url
+          th Descriptión
+          th Parameters
+        tbody
+          tr
+            td
+              span.label.label-primary GET
+            td
+              span.label.label-info /api/v1/users/:id
+            td get specific user
+            td
+              span.label.label-primary none
+          tr
+            td
+              span.label.label-success POST
+            td
+              span.label.label-info /api/v1/users
+            td new user
+            td json object
+          tr
+            td
+              span.label.label-warning PUT
+            td
+              span.label.label-info /api/v1/users/:id
+            td update specific user
+            td json object
+          tr
+            td
+              span.label.label-danger DELETE
+            td
+              span.label.label-info /api/v1/users/:id
+            td delete specific user
+            td
+              span.label.label-primary none
+
+    h4 Sessions Collection
+    table.table.table-bordered.table-responsive
+      thead
+        tr
+          th Method
+          th Domain + Url
+          th Descriptión
+          th Parameters
+        tbody
+          tr
+            td
+              span.label.label-primary GET
+            td
+              span.label.label-info /api/v1/sessions/:id
+            td get specific session
+            td
+              span.label.label-primary none
+          tr
+            td
+              span.label.label-success POST
+            td
+              span.label.label-info /api/v1/sessions
+            td new session
+            td json object
+          tr
+            td
+              span.label.label-warning PUT
+            td
+              span.label.label-info /api/v1/sessions/:id
+            td update specific session
+            td json object
+          tr
+            td
+              span.label.label-danger DELETE
+            td
+              span.label.label-info /api/v1/users/:id
+            td delete specific user
+            td
+              span.label.label-primary none
