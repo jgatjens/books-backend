@@ -17,13 +17,13 @@
   },
   "dependencies": {
     "express": "3.0.1",
+    "underscore": "~1.5.2",
     "mongojs": "~0.9.6",
     "logfmt": "~0.18.1"
   },
   "devDependencies": {
     "should": "2.0.1",
     "jade": "~0.35.0",
-    "underscore": "~1.5.2",
     "supertest": "~0.8.1",
     "mocha": "~1.14.0"
   },
