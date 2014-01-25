@@ -14,6 +14,8 @@ Version
 ----
 
 1.0
+[books-backend.herokuapp.com](http://books-backend.herokuapp.com/)
+
 
 Tech
 -----------
@@ -35,6 +37,7 @@ Instalación del backend
 git clone [git-repo-url] backend
 cd backend
 npm install
+./node_modules/bower/bin/bower install jquery backbone underscore --config.cwd=public
 ```
 
 Si es la primera ves que corre el proyecto lease db/README.md para restaurar la base de datos

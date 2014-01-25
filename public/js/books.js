@@ -1,12 +1,12 @@
 // 
 var BookModel = Backbone.Model.extend({
 	idAttribute: "_id",
-	urlRoot: 'api/books'
+	urlRoot: '/api/v1/books'
 });
 
 var BookCollection = Backbone.Collection.extend({
 	model: BookModel,
-	url: 'api/books'
+	url: '/api/v1/books'
 });
 
 var Books = new BookCollection();
@@ -19,7 +19,7 @@ var UsersModel = Backbone.Model.extend({
 
 var UsersCollection = Backbone.Collection.extend({
 	model: UsersModel,
-	url: 'api/users'
+	url: '/api/v1/users'
 });
 
 var Users = new UsersCollection();
