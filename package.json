@@ -4,6 +4,7 @@
   "contributors": [
     "Jairo Gätjens"
   ],
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:jgatjens/books-backend.git"
@@ -12,6 +13,7 @@
     "node": "0.10.x"
   },
   "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install",
     "test": "make test"
   },
   "dependencies": {
@@ -19,7 +21,8 @@
     "underscore": "~1.5.2",
     "jade": "~0.35.0",
     "mongojs": "~0.9.6",
-    "logfmt": "~0.18.1"
+    "logfmt": "~0.18.1",
+    "bower": "0.6.x"
   },
   "devDependencies": {
     "should": "2.0.1",
