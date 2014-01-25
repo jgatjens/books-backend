@@ -37,6 +37,8 @@ cd backend
 npm install
 ```
 
+Si es la primera ves que corre el proyecto lease db/README.md para restaurar la base de datos
+
 run mongodb
 --------------
 

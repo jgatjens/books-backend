@@ -1,0 +1,2 @@
+use library;
+db.dropDatabase();

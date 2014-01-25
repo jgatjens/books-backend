@@ -1,5 +1,5 @@
 var _ 	= require("underscore"),
-		db 	= require("../conf/database.js");
+	db 	= require("../conf/database.js");
 
 module.exports = function(){
 
