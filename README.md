@@ -1,12 +1,12 @@
 Book's App 
 =========
 
-Book es una aplicación HTML5 que nos permetiria:
+Book es una aplicación HTML5 que nos permitiria:
 
   - obtener bases solidas de Javascript
   - trabajar con flujos reales
   - usar la metodologia agile para proceso de desarrollo
-  - optimización del proceso de desarrollo, calidad y producion 
+  - optimización del proceso de desarrollo, calidad y produccion 
 
 Book va hacer una pequeña aplicacion que listara todos los libros de tecnologia que esten en papel. Una vez un usuario este logeado podra saber quien esta leyendo algun libro de interes o podra reservar un libro.  
 
