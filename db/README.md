@@ -30,6 +30,10 @@ Para restaurar la base de datos:
 
 	$ mongorestore backend/db/library
 
+Heroku mongod database
+
+  $ mongorestore -h ds027769.mongolab.com:27769 -d heroku_app21581708 -u heroku_app21581708 -p vcgoumt6r89kmvmcvsbhnck3tq db/library/
+
 
 
 Si necesitan borrar la base de datos de books que se llama library.
