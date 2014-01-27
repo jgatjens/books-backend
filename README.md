@@ -1,4 +1,4 @@
-Book's App 
+Book's App
 =========
 
 Book es una aplicación HTML5 que nos permitiria:
@@ -6,16 +6,14 @@ Book es una aplicación HTML5 que nos permitiria:
   - obtener bases solidas de Javascript
   - trabajar con flujos reales
   - usar la metodologia agile para proceso de desarrollo
-  - optimización del proceso de desarrollo, calidad y produccion 
+  - optimización del proceso de desarrollo, calidad y produccion
 
-Book va hacer una pequeña aplicacion que listara todos los libros de tecnologia que esten en papel. Una vez un usuario este logeado podra saber quien esta leyendo algun libro de interes o podra reservar un libro.  
+Book va hacer una pequeña aplicacion que listara todos los libros de tecnologia que esten en papel. Una vez un usuario este logeado podra saber quien esta leyendo algun libro de interes o podra reservar un libro.
 
 Version
 ----
 
 1.0
-[books-backend.herokuapp.com](http://books-backend.herokuapp.com/)
-
 
 Tech
 -----------
@@ -24,7 +22,7 @@ Estas son las tecnologias a usar:
 
 * [Nodejs]  - javascript en el backend.
 * [mongodb] - base de datos nosql
-* [Express] - node.js framework  [@tjholowaychuk] 
+* [Express] - node.js framework  [@tjholowaychuk]
 
 Dependencias
 --------------
@@ -37,7 +35,7 @@ Instalación del backend
 git clone [git-repo-url] backend
 cd backend
 npm install
-./node_modules/bower/bin/bower install jquery backbone underscore --config.cwd=public
+# ./node_modules/bower/bin/bower install jquery backbone underscore --config.cwd=public
 ```
 
 Si es la primera ves que corre el proyecto lease db/README.md para restaurar la base de datos
@@ -63,5 +61,9 @@ run tests
 mocha
 ```
 
-  
-    
+Note:
+Si no quieren instalar el backend localmente, en este link en heroku esta corriendo.
+[books-backend.herokuapp.com](http://books-backend.herokuapp.com/)
+
+
+
